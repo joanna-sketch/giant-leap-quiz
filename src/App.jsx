@@ -129,12 +129,21 @@ const sans = { fontFamily: "'Inter','Helvetica Neue',sans-serif" };
 function Cover({ onStart }) {
   return (
     <div style={{ minHeight:'100vh', background: C.cream, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'2.5rem 1.5rem', ...sans }}>
-      <div style={{ marginBottom:'2.8rem', textAlign:'center' }}>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:'0.5rem', background: C.forest, borderRadius:50, padding:'0.45rem 1.1rem 0.45rem 0.9rem' }}>
-          <img src="/logo.png" alt="Giant Leap" style={{ width:24, height:24, objectFit:'contain' }} />
-          <span style={{ color: C.white, fontWeight:700, fontSize:'0.88rem', letterSpacing:'0.06em', textTransform:'uppercase' }}>Giant Leap</span>
-        </div>
-      </div>
+      <div style={{ 
+  marginBottom: '4.5rem', 
+  textAlign: 'center'
+}}>
+  <img 
+    src="/logo.png" 
+    alt="Giant Leap" 
+    style={{ 
+      width: 240,
+      maxWidth: '80%',
+      height: 'auto',
+      objectFit: 'contain'
+    }} 
+  />
+</div>
 
       <div style={{ maxWidth:500, width:'100%', textAlign:'center' }}>
         <h1 style={{ ...font, color: C.ink, fontSize:'2.6rem', fontWeight:400, lineHeight:1.2, marginBottom:'0.5rem' }}>
@@ -243,12 +252,11 @@ function Quiz({ questions, onComplete }) {
   return (
     <div style={{ minHeight:'100vh', background: C.sand, ...sans, padding:'1.5rem 1rem' }}>
       <div style={{ maxWidth:640, margin:'0 auto 1.2rem', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:'0.4rem', background: C.forest, borderRadius:50, padding:'0.35rem 0.9rem' }}>
-          <img src="/logo.png" alt="Giant Leap" style={{ width:20, height:20, objectFit:'contain' }} />
-          <span style={{ color: C.white, fontWeight:700, fontSize:'0.78rem', letterSpacing:'0.06em', textTransform:'uppercase' }}>Giant Leap</span>
-        </div>
-        <span style={{ color: C.muted, fontSize:'0.8rem' }}>{WEEK_LABEL}</span>
-      </div>
+        <img 
+  src="/logo.png" 
+  alt="Giant Leap" 
+  style={{ width: 130, height: 'auto', objectFit:'contain' }} 
+/>
 
       <div style={{ maxWidth:640, margin:'0 auto 1.4rem' }}>
         <div style={{ background: C.border, borderRadius:50, height:4 }}>
@@ -379,10 +387,16 @@ function Leaderboard({ currentName, currentCompany, onBack }) {
       <div style={{ maxWidth:560, margin:'0 auto' }}>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'2rem' }}>
           <div>
-            <div style={{ display:'inline-flex', alignItems:'center', gap:'0.4rem', background: C.forest, borderRadius:50, padding:'0.35rem 0.9rem', marginBottom:'0.8rem' }}>
-              <img src="/logo.png" alt="Giant Leap" style={{ width:20, height:20, objectFit:'contain' }} />
-              <span style={{ color: C.white, fontWeight:700, fontSize:'0.78rem', letterSpacing:'0.06em', textTransform:'uppercase' }}>Giant Leap</span>
-            </div>
+            <img 
+  src="/logo.png" 
+  alt="Giant Leap" 
+  style={{ 
+    width:130, 
+    height:'auto', 
+    objectFit:'contain',
+    marginBottom:'0.8rem'
+  }} 
+/>
             <h2 style={{ ...font, color: C.ink, fontSize:'1.7rem', fontWeight:400, margin:0 }}>This week's scores</h2>
             <p style={{ color: C.muted, fontSize:'0.8rem', marginTop:4 }}>{WEEK_LABEL}</p>
           </div>

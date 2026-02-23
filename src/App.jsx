@@ -1,76 +1,133 @@
 import { useState, useEffect } from 'react';
 
 // ═══════════════════════════════════════════════════════════════════════════
-// ✏️ UPDATE THESE 3 THINGS EACH WEEK
+// ✏️ UPDATE THESE 2 THINGS EACH WEEK
 // ═══════════════════════════════════════════════════════════════════════════
 
 const WEEK_LABEL = '18 – 24 Feb 2026';
-const LEADERBOARD_KEY = 'giant_leap_quiz_feb24_2026';
+const LEADERBOARD_KEY = 'giant_leap_quiz_feb18_2026';
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 🔧 CONFIGURATION - SET ONCE
+// ═══════════════════════════════════════════════════════════════════════════
+
+const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/3948221/ucppuo0/';
+const GOOGLE_SHEET_ID = '1oYP6SOjYXSX_2rGCh3rZP9GfL17wbzgWtcKgGysMNII';
+
+// ═══════════════════════════════════════════════════════════════════════════
 
 const questionBank = [
   {
-    question: "Neara's digital twin platform creates 3D models of energy networks to help utilities manage growing electrification demands. Which of the following is a key strategic reason investors are backing Neara right now?",
-    options: ["The company has reached full grid coverage across North America","Physics-based simulation unlocks asset flexibility without expensive hardware upgrades","Digital twins reduce energy demand from AI data centres","TCV aims to consolidate Australian energy startups"],
-    correct: 1,
-    explanation: "As electrification and AI workloads strain legacy grid infrastructure, software that models real-physics scenarios offers a capital-efficient alternative to hardware overhauls."
-  },
-  {
-    question: "Why is an AI approach to enterprise workflow mapping potentially more scalable than management consultant-led audits?",
-    options: ["A chatbot interface improves adoption among non-technical teams","It captures keystroke-level data at a fraction of consulting costs","It eliminates the need for client-side deployment or integration","A passive desktop agent generates real-time, context-rich data for automation opportunities"],
-    correct: 3,
-    explanation: "Agent-based data capture enables AI to surface automation opportunities in minutes rather than months — fundamentally reshaping how large enterprises approach digital transformation."
-  },
-  {
-    question: "Which Australian health insurer recently launched a $25M fund that prioritises member health outcomes over financial returns?",
-    options: ["Medibank","NIB","HBF","BUPA Australia"],
+    question: "In Capital Brief’s coverage of Eucalyptus’ sale to Hims & Hers, what metric shift was highlighted as most important for Australian VCs right now?",
+    options: [
+      "Increase in TVPI from marking up private rounds",
+      "Higher IRR driven by paper gains pre-exit",
+      "Conversion of exit value into DPI (cash back to LPs)",
+      "Growth in management fees from larger funds"
+    ],
     correct: 2,
-    explanation: "The fund challenges traditional corporate VC models, positioning health innovation as central to long-term member value rather than pure investment return."
+    explanation: "In the current exit environment, DPI (real cash returned to LPs) matters more than paper mark-ups. Liquidity is being prioritised over unrealised valuation gains."
   },
   {
-    question: "Pro Medicus suffered a sharp share-price fall despite reporting a ~30% lift in profit. What best explains the market's reaction?",
-    options: ["Rising interest rates reduced healthcare sector valuations broadly","Expectations were tied to the performance of 4D Medical alone","High dependency on US hospital systems amid policy risk","Growth visibility no longer appeared to justify its premium valuation multiple"],
+    question: "Capital Brief reported that Eucalyptus retreated from an expansion into men’s longevity to focus on weight loss. From an IC perspective, what’s the best interpretation of that pivot given a strategic buyer acquired them shortly after?",
+    options: [
+      "They were forced to pivot mainly due to a new Australian regulation limiting longevity marketing",
+      "It likely improved buyer fit by doubling down on the highest-growth, most defensible wedge (GLP-1/weight loss)",
+      "It signals their CAC had collapsed in men’s health, so they chased a cheaper demographic",
+      "It implies their clinicians refused to support longevity products on ethical grounds"
+    ],
+    correct: 1,
+    explanation: "Strategic focus can increase acquisition probability by clarifying the core growth engine and reducing execution risk. Optionality is not always valuable if it blurs product-market fit before liquidity."
+  },
+  {
+    question: "Capital Brief described an evolution in Firmus’ sustainability positioning—moving from aspirational claims to quantifiable measures. What’s the most investor-relevant risk this evolution highlights for an AI data-centre IPO story?",
+    options: [
+      "Quantified metrics always reduce scrutiny, making IPO due diligence faster",
+      "It suggests the main risk is customer churn in enterprise SaaS contracts",
+      "It increases the likelihood of a short-seller attack focused on unit economics disclosure",
+      "It flags that 'green edge' differentiation can compress as competitors match measured efficiency, reducing pricing power"
+    ],
     correct: 3,
-    explanation: "Even rising profits can trigger major re-ratings in richly valued medtech stocks when investors sense that peak growth expectations aren't being met."
+    explanation: "If sustainability advantages narrow, valuation must rely on durable cost curves and customer lock-in rather than narrative differentiation. Measurable moats can also become comparable."
   },
   {
-    question: "An Australian quantum computing startup claims its architecture could reduce qubit requirements for large-scale problems by orders of magnitude. What is that architecture called?",
-    options: ["FusionCore","Pinnacle","QuantaLayer","DeepSpin"],
-    correct: 1,
-    explanation: "'Pinnacle' advances quantum fault tolerance by materially reducing hardware requirements — critical to bringing practical use cases closer to reality."
-  },
-  {
-    question: "Why might a major AI lab entering Australia via quiet, relationship-first channels offer a long-term advantage over a high-profile launch?",
-    options: ["It allows faster recruitment of ex-competitor employees","It avoids post-regulation scrutiny","It enables deeper alignment with local VCs and institutional channels before committing public capital","It reduces marketing costs prior to monetising the product locally"],
+    question: "Capital Brief reported Superpower is being sued by US rival Function Health, including allegations about inflating biomarker claims and risky employee practices. As an early-stage healthtech investor, what’s the most prudent immediate diligence response?",
+    options: [
+      "Focus primarily on cloud spend and gross margin trajectory to assess runway risk",
+      "Ask for cohort retention metrics to see if the product still works despite controversy",
+      "Request detailed substantiation: clinical validation, marketing claim support, and internal safety/compliance controls",
+      "Delay diligence until the lawsuit settles to avoid anchoring bias"
+    ],
     correct: 2,
-    explanation: "Building nuanced ties with local partners first typically produces stickier commercial and political outcomes than a splashy entrance."
+    explanation: "In consumer health, claims substantiation and governance are existential risks. Diligence must assess defensibility under adversarial scrutiny, not just growth."
   },
   {
-    question: "An Australian agri-tech startup is commercialising autonomous electric tractors designed specifically for vineyards and orchards. What feature makes them uniquely suited to these crops?",
-    options: ["They require specialised pilots with drone licences","They substitute diesel engines for hybrid gas turbines","They can operate in narrow rows with modular electric attachments","They manually tag pests using infrared vision"],
-    correct: 2,
-    explanation: "Purpose-built for high-value specialty farms, these units are nimbler and more efficient than retrofitted mainstream machinery — and avoid the fuel and emissions costs of diesel alternatives."
-  },
-  {
-    question: "UNSW recently launched a Global Innovation Foundry program. What market gap is this initiative primarily designed to address for Australian startups?",
-    options: ["Declining domestic R&D funding","IP licensing with multinational pharma","Maximising returns from university-affiliated IP","Connecting founders to global hiring, capital, and partnerships despite Australia's small domestic market"],
+    question: "Techstars Sydney is shutting down after three years because NSW government funding was not renewed. What’s the most likely near-term ecosystem implication for Australian pre-seed investors?",
+    options: [
+      "Higher availability of government grants will replace accelerator-first cheques",
+      "More seed rounds will shift offshore because Australian SAFEs are no longer accepted",
+      "University spinouts will slow because accelerators are the primary IP owners",
+      "Less structured early founder formation locally, increasing the value of founder-led communities and scout networks"
+    ],
     correct: 3,
-    explanation: "Australia's tech startups consistently struggle to scale internationally. Programs that link founders to global networks fill a material structural gap in the local ecosystem."
+    explanation: "When a structured early funnel disappears, sourcing shifts to informal networks, universities, and micro-funds. Funds that replicate accelerator value may gain disproportionate access."
   },
   {
-    question: "An Australian AI-powered UX observability startup recently completed a Seed raise. Approximately how large was that round?",
-    options: ["$25M Series B","$7M Seed","$11M SAFE","$12.5M Convertible Note"],
-    correct: 1,
-    explanation: "The $7M Seed round reflects growing investor appetite for tools that help product teams understand user behaviour through AI-driven session analysis and insight."
+    question: "Overnight Success covered Appetise raising a Series A and explicitly walking away from ~$400k in consumer subscription revenue to scale its data engine. What’s the best VC interpretation of this trade-off?",
+    options: [
+      "It likely improves strategic value by prioritising a scalable B2B insights product over low-ceiling consumer monetisation",
+      "It suggests the product is failing, so they abandoned monetisation entirely",
+      "It’s mainly a branding decision to win app-store rankings through free distribution",
+      "It reduces compliance risk because paid subscriptions trigger stricter privacy obligations than free apps"
+    ],
+    correct: 0,
+    explanation: "Sacrificing small consumer revenue can be rational if it accelerates dataset growth and strengthens a higher-ARPA B2B model. The key question is whether the data moat compounds."
   },
   {
-    question: "A prominent Australian VC firm recently deposited $750k into court as part of ongoing litigation with a portfolio company. What does this signal about early-stage VC behaviour in high-risk environments?",
-    options: ["VCs are increasingly reliant on legal remedies over portfolio construction","VCs are willing to pursue costly litigation to protect signalling and relationships","VCs are too exposed to follow-on dilution in failed bets","Courts are now a routine channel for distressed venture monetisation"],
+    question: "Breaker raised a $9m seed to move beyond the 'one-operator-per-robot' model, using voice commands and onboard agents even in GPS/comms-denied environments. For a VC assessing dual-use defence tech, what’s the sharpest go-to-market question implied?",
+    options: [
+      "Can the company win repeated procurement pathways (not just demos) across defence agencies with long sales cycles?",
+      "Can the company reduce office footprint to extend runway?",
+      "Can the company migrate from Python to Rust for performance?",
+      "Can the company avoid hiring ex-military staff to keep burn low?"
+    ],
+    correct: 0,
+    explanation: "Defence outcomes hinge on procurement and integration, not just technical capability. Converting demos into programs of record determines venture-scale viability."
+  },
+  {
+    question: "Capital Brief noted deep AI scepticism among lower income, older and regional Australians, potentially limiting AI’s role in lifting productivity. What’s the most actionable implication for builders and investors in AI for education and workforce upskilling?",
+    options: [
+      "Avoid these segments entirely and target only metro enterprise users",
+      "Lead with trust-building UX: transparency, human-in-the-loop support, and outcomes evidence rather than capability marketing",
+      "Prioritise entertainment use-cases first to normalise AI adoption",
+      "Shift investment away from applied AI and into semiconductor manufacturing"
+    ],
     correct: 1,
-    explanation: "Pursuing expensive litigation signals to LPs and founders that the firm defends its positions — a move rooted as much in reputation management as legal leverage."
+    explanation: "If scepticism is concentrated among vulnerable cohorts, adoption depends on perceived safety, fairness, and measurable outcomes. Distribution partnerships become critical."
+  },
+  {
+    question: "UNSW committed $35m to launch 50 university spinouts over five years. Which investor behaviour is most rational if this type of university 'spinout factory' scales?",
+    options: [
+      "Build earlier technical diligence capability and relationships with university translational offices to pre-empt competitive seed rounds",
+      "Move downmarket into consumer apps because spinouts won’t hire commercial talent",
+      "Stop backing universities and focus only on repeat founders",
+      "Wait for Series B when IP risk is fully eliminated"
+    ],
+    correct: 0,
+    explanation: "Higher spinout volume increases dealflow but also adverse selection risk. Investors who systematise early IP diligence can secure stronger ownership before valuations rise."
+  },
+  {
+    question: "Capital Brief reported Archangel is raising a $40m fund to back pre-seed and seed, citing a funding gap and improving LP appetite favouring smaller VCs. What’s the best explanation for why a smaller fund could be structurally advantaged right now?",
+    options: [
+      "Smaller funds can deliver meaningful DPI sooner via secondaries and smaller exits, aligning with LP demand for cash distributions",
+      "Smaller funds can always underwrite later-stage growth rounds better than large funds",
+      "Smaller funds are exempt from competitive deal processes",
+      "Smaller funds avoid valuation risk because pre-seed valuations never fall"
+    ],
+    correct: 0,
+    explanation: "In an exit-drought environment, LPs favour managers who can return cash sooner. Smaller funds can generate fund-returners with fewer outcomes and tighter ownership concentration."
   }
 ];
-
-// ═══════════════════════════════════════════════════════════════════════════
 
 const C = {
   forest:   '#2d4a3e',
@@ -98,17 +155,65 @@ function shuffle(arr) {
   return a;
 }
 
-function loadLeaderboard() {
+// Load leaderboard from Google Sheets
+async function loadLeaderboard() {
   try {
-    const data = localStorage.getItem(LEADERBOARD_KEY);
-    return data ? JSON.parse(data) : [];
-  } catch { return []; }
+    const url = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1`;
+    const response = await fetch(url);
+    const text = await response.text();
+    const json = JSON.parse(text.substr(47).slice(0, -2));
+    
+    const entries = json.table.rows.map(row => ({
+      name: row.c[0]?.v || '',
+      company: row.c[1]?.v || '',
+      score: parseInt(row.c[2]?.v || 0),
+      total: parseInt(row.c[3]?.v || 10),
+      pct: parseInt(row.c[4]?.v || 0),
+      ts: new Date(row.c[5]?.v || Date.now()).getTime(),
+      week: row.c[6]?.v || ''
+    }));
+    
+    // Filter for current week and sort
+    const currentWeek = entries.filter(e => e.week === WEEK_LABEL);
+    currentWeek.sort((a, b) => b.pct - a.pct || a.ts - b.ts);
+    
+    return currentWeek;
+  } catch (error) {
+    console.error('Error loading leaderboard:', error);
+    // Fallback to localStorage
+    try {
+      const data = localStorage.getItem(LEADERBOARD_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
 }
 
-function saveScore(name, company, score, total) {
+// Save score to Zapier webhook (which writes to Google Sheets)
+async function saveScore(name, company, score, total) {
+  const pct = Math.round((score / total) * 100);
+  const timestamp = new Date().toISOString();
+  
   try {
-    const entries = loadLeaderboard();
-    const pct = Math.round((score / total) * 100);
+    // Send to Zapier webhook
+    await fetch(ZAPIER_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name || '',
+        company: company || '',
+        score,
+        total,
+        percentage: pct,
+        timestamp,
+        week: WEEK_LABEL
+      })
+    });
+    
+    // Also save to localStorage as backup
+    const localData = localStorage.getItem(LEADERBOARD_KEY);
+    const entries = localData ? JSON.parse(localData) : [];
     const newEntry = { name, company, score, total, pct, ts: Date.now() };
     const idx = entries.findIndex(
       e => (e.name||'').toLowerCase() === name.toLowerCase() &&
@@ -118,8 +223,10 @@ function saveScore(name, company, score, total) {
     else entries.push(newEntry);
     entries.sort((a, b) => b.pct - a.pct || a.ts - b.ts);
     localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(entries.slice(0, 50)));
-    return entries;
-  } catch { return []; }
+    
+  } catch (error) {
+    console.error('Error saving score:', error);
+  }
 }
 
 const font = { fontFamily: "'Georgia','Times New Roman',serif" };
@@ -374,8 +481,11 @@ function Leaderboard({ currentName, currentCompany, onBack }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setEntries(loadLeaderboard());
-    setLoading(false);
+    (async () => {
+      const data = await loadLeaderboard();
+      setEntries(data);
+      setLoading(false);
+    })();
   }, []);
 
   const displayName = e => e.name || e.company || 'Anonymous';
@@ -461,9 +571,9 @@ export default function App() {
     setScreen('quiz');
   };
 
-  const handleComplete = (score) => {
+  const handleComplete = async (score) => {
     setFinalScore(score);
-    saveScore(playerName, playerCompany, score, questionBank.length);
+    await saveScore(playerName, playerCompany, score, questionBank.length);
     setScreen('results');
   };
 

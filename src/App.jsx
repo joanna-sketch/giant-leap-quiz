@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 // ✏️ UPDATE THESE 3 THINGS EACH WEEK
 // ═══════════════════════════════════════════════════════════════════════════
 
-const WEEK_LABEL = '18 – 24 Feb 2026';
-const LEADERBOARD_KEY = 'giant_leap_quiz_feb24_2026';
+const WEEK_LABEL = '10 – 17 Feb 2026';
+const LEADERBOARD_KEY = 'giant_leap_quiz_feb17_2026';
 
 const questionBank = [
   {
@@ -128,7 +128,7 @@ const sans = { fontFamily: "'Inter','Helvetica Neue',sans-serif" };
 function Cover({ onStart }) {
   return (
     <div style={{ minHeight:'100vh', background: C.cream, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding:'2.5rem 1.5rem', ...sans }}>
-      <div style={{ marginBottom: '4.5rem', textAlign: 'center' }}>
+      <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
         <img 
           src="/logo.png" 
           alt="Giant Leap" 
@@ -152,12 +152,15 @@ function Cover({ onStart }) {
         </p>
 
         <div style={{ display:'flex', gap:'0.7rem', justifyContent:'center', marginBottom:'2rem', flexWrap:'wrap' }}>
-          {[['10 questions',''],['~5 minutes',''],['10 – 17 Feb 2026','This week']].map(([v, l]) => (
+          {[['10 questions',''],['~5 minutes','']].map(([v, l]) => (
             <div key={v} style={{ background: C.sandDk, borderRadius:50, padding:'0.45rem 1rem', display:'flex', alignItems:'center', gap:'0.4rem' }}>
-              {l && <span style={{ color: C.sageLt, fontSize:'0.72rem', textTransform:'uppercase', letterSpacing:'0.06em', fontWeight:600 }}>{l}:</span>}
               <span style={{ color: C.ink, fontSize:'0.82rem', fontWeight:600 }}>{v}</span>
             </div>
           ))}
+          <div style={{ background: C.sandDk, borderRadius:50, padding:'0.45rem 1rem', display:'flex', alignItems:'center', gap:'0.4rem' }}>
+            <span style={{ color: C.sageLt, fontSize:'0.72rem', textTransform:'uppercase', letterSpacing:'0.06em', fontWeight:600 }}>This week:</span>
+            <span style={{ color: C.ink, fontSize:'0.82rem', fontWeight:600 }}>{WEEK_LABEL}</span>
+          </div>
         </div>
 
         <div style={{ background: C.sandDk, border:`1px solid ${C.border}`, borderRadius:12, padding:'1rem 1.3rem', marginBottom:'2.2rem', textAlign:'left' }}>

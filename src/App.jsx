@@ -272,7 +272,7 @@ function Cover({ onStart }) {
 
         <div style={{ background: C.sandDk, border:`1px solid ${C.border}`, borderRadius:12, padding:'1rem 1.3rem', marginBottom:'2.2rem', textAlign:'left' }}>
           <p style={{ color: C.muted, fontSize:'0.78rem', lineHeight:1.65, margin:0 }}>
-            <span style={{ color: C.forest, fontWeight:700 }}>👋 A note before you play:</span> Questions cover Australian startup & venture news from the past week. Your score goes on a public leaderboard — enter your name or company to participate.
+            <span style={{ color: C.forest, fontWeight:700 }}>👋 A note before you play:</span> Questions cover Australian startup & venture news from the past week. Your score goes on a public leaderboard. Enter your name or company to participate.
           </p>
         </div>
 

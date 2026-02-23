@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 // ✏️ UPDATE THESE 3 THINGS EACH WEEK
 // ═══════════════════════════════════════════════════════════════════════════
 
-const WEEK_LABEL = '10 – 17 Feb 2026';
-const LEADERBOARD_KEY = 'giant_leap_quiz_feb17_2026';
+const WEEK_LABEL = '18 – 24 Feb 2026';
+const LEADERBOARD_KEY = 'giant_leap_quiz_feb24_2026';
 
 const questionBank = [
   {

@@ -128,7 +128,6 @@ const questionBank = [
     explanation: "Serving production AI is a distributed systems challenge involving routing, optimisation and heterogeneous compute. Infrastructure providers solving this complexity may capture durable value even as models commoditise."
   }
 ];
-];
 
 const C = {
   forest:   '#2d4a3e',

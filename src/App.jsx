@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 // ✏️ UPDATE THESE 2 THINGS EACH WEEK
 // ═══════════════════════════════════════════════════════════════════════════
 
-const WEEK_LABEL = '4 – 10 Feb 2026';
+const WEEK_LABEL = '4 – 10 Mar 2026';
 const LEADERBOARD_KEY = 'giant_leap_quiz_Mar4_2026';
 
 // ═══════════════════════════════════════════════════════════════════════════

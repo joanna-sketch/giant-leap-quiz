@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 // ✏️ UPDATE THESE 2 THINGS EACH WEEK
 // ═══════════════════════════════════════════════════════════════════════════
 
-const WEEK_LABEL = '18 – 24 Feb 2026';
-const LEADERBOARD_KEY = 'giant_leap_quiz_feb18_2026';
+const WEEK_LABEL = '4 – 10 Feb 2026';
+const LEADERBOARD_KEY = 'giant_leap_quiz_Mar4_2026';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // 🔧 CONFIGURATION - SET ONCE
@@ -18,115 +18,116 @@ const GOOGLE_SHEET_ID = '1oYP6SOjYXSX_2rGCh3rZP9GfL17wbzgWtcKgGysMNII';
 
 const questionBank = [
   {
-    question: "In Capital Brief’s coverage of Eucalyptus’ sale to Hims & Hers, what metric shift was highlighted as most important for Australian VCs right now?",
+    question: "In the breakdown of Eucalyptus’ $1.6 billion sale to Hims & Hers, what proportion of key employees’ total payout is scheduled to be paid upfront at closing?",
     options: [
-      "Increase in TVPI from marking up private rounds",
-      "Higher IRR driven by paper gains pre-exit",
-      "Conversion of exit value into DPI (cash back to LPs)",
-      "Growth in management fees from larger funds"
-    ],
-    correct: 2,
-    explanation: "In the current exit environment, DPI (real cash returned to LPs) matters more than paper mark-ups. Liquidity is being prioritised over unrealised valuation gains."
-  },
-  {
-    question: "Capital Brief reported that Eucalyptus retreated from an expansion into men’s longevity to focus on weight loss. From an IC perspective, what’s the best interpretation of that pivot given a strategic buyer acquired them shortly after?",
-    options: [
-      "They were forced to pivot mainly due to a new Australian regulation limiting longevity marketing",
-      "It likely improved buyer fit by doubling down on the highest-growth, most defensible wedge (GLP-1/weight loss)",
-      "It signals their CAC had collapsed in men’s health, so they chased a cheaper demographic",
-      "It implies their clinicians refused to support longevity products on ethical grounds"
+      "60%",
+      "40%",
+      "18%",
+      "25%"
     ],
     correct: 1,
-    explanation: "Strategic focus can increase acquisition probability by clarifying the core growth engine and reducing execution risk. Optionality is not always valuable if it blurs product-market fit before liquidity."
+    explanation: "According to the reporting, 40% of key employees’ payout is scheduled to be paid upfront at closing, with the remainder tied to future conditions or earn-outs."
   },
   {
-    question: "Capital Brief described an evolution in Firmus’ sustainability positioning—moving from aspirational claims to quantifiable measures. What’s the most investor-relevant risk this evolution highlights for an AI data-centre IPO story?",
+    question: "Heidi’s acquisition of UK-based Automedica was followed by launches including Heidi Evidence and Heidi Comms. For an early-stage healthtech investor, what is the strongest strategic signal from that sequence?",
     options: [
-      "Quantified metrics always reduce scrutiny, making IPO due diligence faster",
-      "It suggests the main risk is customer churn in enterprise SaaS contracts",
-      "It increases the likelihood of a short-seller attack focused on unit economics disclosure",
-      "It flags that 'green edge' differentiation can compress as competitors match measured efficiency, reducing pricing power"
+      "Heidi is shifting from a single-point AI scribe toward a broader clinical workflow platform with stronger defensibility",
+      "Heidi is mainly pursuing geographic arbitrage by moving R&D to the UK",
+      "Heidi is deprioritising core product monetisation in favour of regulatory lobbying",
+      "Heidi is reducing model dependence by exiting third-party foundation models"
     ],
-    correct: 3,
-    explanation: "If sustainability advantages narrow, valuation must rely on durable cost curves and customer lock-in rather than narrative differentiation. Measurable moats can also become comparable."
+    correct: 0,
+    explanation: "The sequence suggests Heidi is expanding from documentation into decision support and coordination, broadening its product surface area and embedding more deeply in clinical workflows. This typically strengthens retention, pricing power and strategic value."
   },
   {
-    question: "Capital Brief reported Superpower is being sued by US rival Function Health, including allegations about inflating biomarker claims and risky employee practices. As an early-stage healthtech investor, what’s the most prudent immediate diligence response?",
+    question: "Canva acquired Cavalry and stealth startup MangoAI in the same week. Which interpretation best explains the combined logic of those deals?",
     options: [
-      "Focus primarily on cloud spend and gross margin trajectory to assess runway risk",
-      "Ask for cohort retention metrics to see if the product still works despite controversy",
-      "Request detailed substantiation: clinical validation, marketing claim support, and internal safety/compliance controls",
-      "Delay diligence until the lawsuit settles to avoid anchoring bias"
+      "Canva is building a hardware-accelerated video rendering stack to compete with chip vendors",
+      "Canva is pivoting away from design software into pure ad buying",
+      "Canva is trying to become an end-to-end creative and performance marketing platform, spanning production and optimisation",
+      "Canva is mainly making acqui-hires to replace internal engineering teams"
     ],
     correct: 2,
-    explanation: "In consumer health, claims substantiation and governance are existential risks. Diligence must assess defensibility under adversarial scrutiny, not just growth."
+    explanation: "Cavalry strengthens professional motion creation while MangoAI adds reinforcement-learning-driven ad optimisation. Together they suggest Canva is moving up the value chain toward a full creative and performance marketing workflow platform."
   },
   {
-    question: "Techstars Sydney is shutting down after three years because NSW government funding was not renewed. What’s the most likely near-term ecosystem implication for Australian pre-seed investors?",
+    question: "In the article on AI spending and tech debt, what was the core concern raised by boards and CFOs about enterprise AI adoption?",
     options: [
-      "Higher availability of government grants will replace accelerator-first cheques",
-      "More seed rounds will shift offshore because Australian SAFEs are no longer accepted",
-      "University spinouts will slow because accelerators are the primary IP owners",
-      "Less structured early founder formation locally, increasing the value of founder-led communities and scout networks"
-    ],
-    correct: 3,
-    explanation: "When a structured early funnel disappears, sourcing shifts to informal networks, universities, and micro-funds. Funds that replicate accelerator value may gain disproportionate access."
-  },
-  {
-    question: "Overnight Success covered Appetise raising a Series A and explicitly walking away from ~$400k in consumer subscription revenue to scale its data engine. What’s the best VC interpretation of this trade-off?",
-    options: [
-      "It likely improves strategic value by prioritising a scalable B2B insights product over low-ceiling consumer monetisation",
-      "It suggests the product is failing, so they abandoned monetisation entirely",
-      "It’s mainly a branding decision to win app-store rankings through free distribution",
-      "It reduces compliance risk because paid subscriptions trigger stricter privacy obligations than free apps"
-    ],
-    correct: 0,
-    explanation: "Sacrificing small consumer revenue can be rational if it accelerates dataset growth and strengthens a higher-ARPA B2B model. The key question is whether the data moat compounds."
-  },
-  {
-    question: "Breaker raised a $9m seed to move beyond the 'one-operator-per-robot' model, using voice commands and onboard agents even in GPS/comms-denied environments. For a VC assessing dual-use defence tech, what’s the sharpest go-to-market question implied?",
-    options: [
-      "Can the company win repeated procurement pathways (not just demos) across defence agencies with long sales cycles?",
-      "Can the company reduce office footprint to extend runway?",
-      "Can the company migrate from Python to Rust for performance?",
-      "Can the company avoid hiring ex-military staff to keep burn low?"
-    ],
-    correct: 0,
-    explanation: "Defence outcomes hinge on procurement and integration, not just technical capability. Converting demos into programs of record determines venture-scale viability."
-  },
-  {
-    question: "Capital Brief noted deep AI scepticism among lower income, older and regional Australians, potentially limiting AI’s role in lifting productivity. What’s the most actionable implication for builders and investors in AI for education and workforce upskilling?",
-    options: [
-      "Avoid these segments entirely and target only metro enterprise users",
-      "Lead with trust-building UX: transparency, human-in-the-loop support, and outcomes evidence rather than capability marketing",
-      "Prioritise entertainment use-cases first to normalise AI adoption",
-      "Shift investment away from applied AI and into semiconductor manufacturing"
+      "AI cannot be deployed until all legacy systems are fully replaced",
+      "AI may improve productivity but still fail to overcome years of costly tech decisions or reliably lift margins and returns",
+      "AI budgets are too small to create any measurable operational impact",
+      "AI regulation in Australia has already made enterprise deployment uneconomic"
     ],
     correct: 1,
-    explanation: "If scepticism is concentrated among vulnerable cohorts, adoption depends on perceived safety, fairness, and measurable outcomes. Distribution partnerships become critical."
+    explanation: "The concern is that AI spending alone does not guarantee ROI. Startups that can integrate into messy enterprise environments and demonstrate clear economic proof points are more likely to succeed."
   },
   {
-    question: "UNSW committed $35m to launch 50 university spinouts over five years. Which investor behaviour is most rational if this type of university 'spinout factory' scales?",
+    question: "IREN was promoting itself heavily in Sydney while remaining hesitant to build local data centres, citing red tape. From a VC perspective, what is the best read on that posture?",
     options: [
-      "Build earlier technical diligence capability and relationships with university translational offices to pre-empt competitive seed rounds",
-      "Move downmarket into consumer apps because spinouts won’t hire commercial talent",
-      "Stop backing universities and focus only on repeat founders",
-      "Wait for Series B when IP risk is fully eliminated"
+      "It suggests Australian demand for AI infrastructure is collapsing",
+      "It implies branding has become more important than infrastructure economics",
+      "It indicates listed AI infrastructure players may want policy signalling and customer presence before committing capex locally",
+      "It shows Australia has already solved planning and power bottlenecks for AI compute"
     ],
-    correct: 0,
-    explanation: "Higher spinout volume increases dealflow but also adverse selection risk. Investors who systematise early IP diligence can secure stronger ownership before valuations rise."
+    correct: 2,
+    explanation: "The article implies the bottleneck is execution conditions such as permitting, power access and infrastructure economics. Companies may seek policy clarity and market presence before committing major capex locally."
   },
   {
-    question: "Capital Brief reported Archangel is raising a $40m fund to back pre-seed and seed, citing a funding gap and improving LP appetite favouring smaller VCs. What’s the best explanation for why a smaller fund could be structurally advantaged right now?",
+    question: "PlasmaLeap raised $30 million to advance zero-emission fertilisers. In climate tech underwriting, which factor is most likely to be the critical gating risk from here?",
     options: [
-      "Smaller funds can deliver meaningful DPI sooner via secondaries and smaller exits, aligning with LP demand for cash distributions",
-      "Smaller funds can always underwrite later-stage growth rounds better than large funds",
-      "Smaller funds are exempt from competitive deal processes",
-      "Smaller funds avoid valuation risk because pre-seed valuations never fall"
+      "Whether fertiliser distributors will accept lower gross margins than software resellers",
+      "Whether the company can achieve cost-competitive production and reliable scale-up versus incumbent fertiliser pathways",
+      "Whether residential consumers understand the emissions profile of fertiliser inputs",
+      "Whether carbon accounting standards prohibit new fertiliser categories"
+    ],
+    correct: 1,
+    explanation: "Industrial climate startups often succeed or fail based on scale-up and cost parity with incumbents. In fertiliser production, capital intensity and reliable industrial deployment are critical to commercial viability."
+  },
+  {
+    question: "The NSW Government launched a $20 million fund to back emerging tech and bioscience startups. For seed investors in life sciences, what is the most defensible implication?",
+    options: [
+      "State-backed capital can help extend runway for technically strong startups that are too early for mainstream VC, especially in bioscience",
+      "The fund is likely to crowd out all private seed investment in NSW biotech",
+      "Bioscience companies in NSW no longer need private follow-on capital",
+      "The main effect will be immediate liquidity for existing shareholders"
     ],
     correct: 0,
-    explanation: "In an exit-drought environment, LPs favour managers who can return cash sooner. Smaller funds can generate fund-returners with fewer outcomes and tighter ownership concentration."
+    explanation: "Bioscience startups often face longer development cycles and thinner early private capital markets. Targeted public funding can support company formation and de-risk the stage before institutional VC leads."
+  },
+  {
+    question: "TMRW raised $7 million and struck an exclusive local deal with US epigenetic testing leader TruDiagnostic to expand its precision medicine platform. What is the clearest strategic upside of that pairing?",
+    options: [
+      "It removes the need for clinical validation in Australia",
+      "It lets TMRW avoid customer acquisition by selling only through hospitals",
+      "It primarily converts TMRW into a therapeutics company",
+      "It gives TMRW differentiated access to testing capability and brand leverage without having to build the underlying lab platform from scratch"
+    ],
+    correct: 3,
+    explanation: "Exclusive partnerships can create defensibility and accelerate go-to-market without requiring full infrastructure buildout. This approach preserves capital and maintains optionality for deeper integration later."
+  },
+  {
+    question: "The CSIRO warned that long-term underfunding had forced deep job cuts. Which annual funding range did CSIRO say it needs over the next decade to remain sustainable?",
+    options: [
+      "$20m–$50m per year",
+      "$150m–$200m per year",
+      "$80m–$135m per year",
+      "$40m–$70m per year"
+    ],
+    correct: 2,
+    explanation: "CSIRO stated it needs between $80m and $135m per year over the next decade to maintain sustainable operations after significant job cuts across research and non-research roles."
+  },
+  {
+    question: "Baseten raised a $300 million Series E at a $5 billion valuation to power AI inference in production. Which thesis best explains why investors may view inference infrastructure as one of the stickiest layers in the AI stack?",
+    options: [
+      "Training infrastructure is disappearing, leaving inference as the only remaining AI category",
+      "Inference demand is becoming operationally complex as workloads fragment across models, clouds and chips, making orchestration a persistent pain point",
+      "Most enterprises prefer to build all inference systems fully in-house",
+      "Inference economics are largely insulated from hardware scarcity and price volatility"
+    ],
+    correct: 1,
+    explanation: "Serving production AI is a distributed systems challenge involving routing, optimisation and heterogeneous compute. Infrastructure providers solving this complexity may capture durable value even as models commoditise."
   }
+];
 ];
 
 const C = {

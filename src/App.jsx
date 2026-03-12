@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
-import questionBank from './questions.json';
-
-// ═══════════════════════════════════════════════════════════════════════════
-// ✏️ UPDATE THESE 2 THINGS EACH WEEK
-// ═══════════════════════════════════════════════════════════════════════════
-
-const WEEK_LABEL = '4 – 10 Mar 2026';
-const LEADERBOARD_KEY = 'giant_leap_quiz_Mar4_2026';
+import quizData from './questions.json';
+const questionBank = quizData.questions;
+const WEEK_LABEL = quizData.weekLabel;
+const LEADERBOARD_KEY = quizData.leaderboardKey;
 
 // ═══════════════════════════════════════════════════════════════════════════
 // 🔧 CONFIGURATION - SET ONCE
@@ -236,8 +232,7 @@ function Quiz({ questions, onComplete }) {
   };
 
   const next = () => {
-    const newScore = (selected === q.correct ? score + 1 : score);
-    if (idx + 1 >= questions.length) { onComplete(newScore); return; }
+    if (idx + 1 >= questions.length) { onComplete(score); return; }
     setIdx(i => i + 1);
     setSelected(null);
     setAnswered(false);

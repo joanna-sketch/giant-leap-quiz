@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import questionBank from './questions.json';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // ✏️ UPDATE THESE 2 THINGS EACH WEEK
@@ -15,119 +16,6 @@ const ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/3948221/ucppuo0/';
 const GOOGLE_SHEET_ID = '1oYP6SOjYXSX_2rGCh3rZP9GfL17wbzgWtcKgGysMNII';
 
 // ═══════════════════════════════════════════════════════════════════════════
-
-const questionBank = [
-  {
-    question: "In the breakdown of Eucalyptus’ $1.6 billion sale to Hims & Hers, what proportion of key employees’ total payout is scheduled to be paid upfront at closing?",
-    options: [
-      "60%",
-      "40%",
-      "18%",
-      "25%"
-    ],
-    correct: 1,
-    explanation: "According to the reporting, 40% of key employees’ payout is scheduled to be paid upfront at closing, with the remainder tied to future conditions or earn-outs."
-  },
-  {
-    question: "Heidi’s acquisition of UK-based Automedica was followed by launches including Heidi Evidence and Heidi Comms. For an early-stage healthtech investor, what is the strongest strategic signal from that sequence?",
-    options: [
-      "Heidi is shifting from a single-point AI scribe toward a broader clinical workflow platform with stronger defensibility",
-      "Heidi is mainly pursuing geographic arbitrage by moving R&D to the UK",
-      "Heidi is deprioritising core product monetisation in favour of regulatory lobbying",
-      "Heidi is reducing model dependence by exiting third-party foundation models"
-    ],
-    correct: 0,
-    explanation: "The sequence suggests Heidi is expanding from documentation into decision support and coordination, broadening its product surface area and embedding more deeply in clinical workflows. This typically strengthens retention, pricing power and strategic value."
-  },
-  {
-    question: "Canva acquired Cavalry and stealth startup MangoAI in the same week. Which interpretation best explains the combined logic of those deals?",
-    options: [
-      "Canva is building a hardware-accelerated video rendering stack to compete with chip vendors",
-      "Canva is pivoting away from design software into pure ad buying",
-      "Canva is trying to become an end-to-end creative and performance marketing platform, spanning production and optimisation",
-      "Canva is mainly making acqui-hires to replace internal engineering teams"
-    ],
-    correct: 2,
-    explanation: "Cavalry strengthens professional motion creation while MangoAI adds reinforcement-learning-driven ad optimisation. Together they suggest Canva is moving up the value chain toward a full creative and performance marketing workflow platform."
-  },
-  {
-    question: "In the article on AI spending and tech debt, what was the core concern raised by boards and CFOs about enterprise AI adoption?",
-    options: [
-      "AI cannot be deployed until all legacy systems are fully replaced",
-      "AI may improve productivity but still fail to overcome years of costly tech decisions or reliably lift margins and returns",
-      "AI budgets are too small to create any measurable operational impact",
-      "AI regulation in Australia has already made enterprise deployment uneconomic"
-    ],
-    correct: 1,
-    explanation: "The concern is that AI spending alone does not guarantee ROI. Startups that can integrate into messy enterprise environments and demonstrate clear economic proof points are more likely to succeed."
-  },
-  {
-    question: "IREN was promoting itself heavily in Sydney while remaining hesitant to build local data centres, citing red tape. From a VC perspective, what is the best read on that posture?",
-    options: [
-      "It suggests Australian demand for AI infrastructure is collapsing",
-      "It implies branding has become more important than infrastructure economics",
-      "It indicates listed AI infrastructure players may want policy signalling and customer presence before committing capex locally",
-      "It shows Australia has already solved planning and power bottlenecks for AI compute"
-    ],
-    correct: 2,
-    explanation: "The article implies the bottleneck is execution conditions such as permitting, power access and infrastructure economics. Companies may seek policy clarity and market presence before committing major capex locally."
-  },
-  {
-    question: "PlasmaLeap raised $30 million to advance zero-emission fertilisers. In climate tech underwriting, which factor is most likely to be the critical gating risk from here?",
-    options: [
-      "Whether fertiliser distributors will accept lower gross margins than software resellers",
-      "Whether the company can achieve cost-competitive production and reliable scale-up versus incumbent fertiliser pathways",
-      "Whether residential consumers understand the emissions profile of fertiliser inputs",
-      "Whether carbon accounting standards prohibit new fertiliser categories"
-    ],
-    correct: 1,
-    explanation: "Industrial climate startups often succeed or fail based on scale-up and cost parity with incumbents. In fertiliser production, capital intensity and reliable industrial deployment are critical to commercial viability."
-  },
-  {
-    question: "The NSW Government launched a $20 million fund to back emerging tech and bioscience startups. For seed investors in life sciences, what is the most defensible implication?",
-    options: [
-      "State-backed capital can help extend runway for technically strong startups that are too early for mainstream VC, especially in bioscience",
-      "The fund is likely to crowd out all private seed investment in NSW biotech",
-      "Bioscience companies in NSW no longer need private follow-on capital",
-      "The main effect will be immediate liquidity for existing shareholders"
-    ],
-    correct: 0,
-    explanation: "Bioscience startups often face longer development cycles and thinner early private capital markets. Targeted public funding can support company formation and de-risk the stage before institutional VC leads."
-  },
-  {
-    question: "TMRW raised $7 million and struck an exclusive local deal with US epigenetic testing leader TruDiagnostic to expand its precision medicine platform. What is the clearest strategic upside of that pairing?",
-    options: [
-      "It removes the need for clinical validation in Australia",
-      "It lets TMRW avoid customer acquisition by selling only through hospitals",
-      "It primarily converts TMRW into a therapeutics company",
-      "It gives TMRW differentiated access to testing capability and brand leverage without having to build the underlying lab platform from scratch"
-    ],
-    correct: 3,
-    explanation: "Exclusive partnerships can create defensibility and accelerate go-to-market without requiring full infrastructure buildout. This approach preserves capital and maintains optionality for deeper integration later."
-  },
-  {
-    question: "The CSIRO warned that long-term underfunding had forced deep job cuts. Which annual funding range did CSIRO say it needs over the next decade to remain sustainable?",
-    options: [
-      "$20m–$50m per year",
-      "$150m–$200m per year",
-      "$80m–$135m per year",
-      "$40m–$70m per year"
-    ],
-    correct: 2,
-    explanation: "CSIRO stated it needs between $80m and $135m per year over the next decade to maintain sustainable operations after significant job cuts across research and non-research roles."
-  },
-  {
-    question: "Baseten raised a $300 million Series E at a $5 billion valuation to power AI inference in production. Which thesis best explains why investors may view inference infrastructure as one of the stickiest layers in the AI stack?",
-    options: [
-      "Training infrastructure is disappearing, leaving inference as the only remaining AI category",
-      "Inference demand is becoming operationally complex as workloads fragment across models, clouds and chips, making orchestration a persistent pain point",
-      "Most enterprises prefer to build all inference systems fully in-house",
-      "Inference economics are largely insulated from hardware scarcity and price volatility"
-    ],
-    correct: 1,
-    explanation: "Serving production AI is a distributed systems challenge involving routing, optimisation and heterogeneous compute. Infrastructure providers solving this complexity may capture durable value even as models commoditise."
-  }
-];
 
 const C = {
   forest:   '#2d4a3e',

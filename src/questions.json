@@ -1,8 +1,112 @@
 [
   {
-    "question": "Placeholder",
-    "options": ["A", "B", "C", "D"],
+    "question": "In the Eucalyptus acquisition by Hims & Hers, what portion of key employees’ total payout is paid upfront at closing, with the remainder tied largely to 2026–2028 performance targets?",
+    "options": [
+      "60%",
+      "25%",
+      "40%",
+      "18%"
+    ],
+    "correct": 2,
+    "explanation": "Key employees receive 40% upfront and the remaining 60% is contingent on revenue and EBITDA targets over three years. For investors, that highlights how acquirers use earnouts to retain and motivate talent post-acquisition."
+  },
+  {
+    "question": "Heidi acquired UK-based Automedica and then launched Heidi Evidence and Heidi Comms. For an early-stage VC, what is the strongest strategic implication of this move?",
+    "options": [
+      "It primarily reduces cloud costs by shifting inference offshore",
+      "It broadens Heidi from a single AI scribing workflow into a more embedded clinical platform with regulatory leverage in the UK",
+      "It signals Heidi is preparing to exit healthcare and become a general enterprise AI company",
+      "It shows healthcare AI defensibility mainly comes from owning custom chips"
+    ],
+    "correct": 1,
+    "explanation": "The acquisition extends Heidi beyond note-taking into clinical decision support and coordination, while strengthening its UK footprint and access to the MHRA AI Airlock. That combination suggests platform expansion plus regulatory advantage, not just feature bundling."
+  },
+  {
+    "question": "Canva bought Cavalry for motion design and MangoAI for reinforcement-learning-based ad optimisation. What is the best interpretation of why these two acquisitions fit together?",
+    "options": [
+      "They help Canva move upmarket by combining pro creative tooling with performance marketing outcomes",
+      "They are mainly a defensive move against payroll inflation in Australia",
+      "They indicate Canva is abandoning self-serve users in favour of agencies only",
+      "They are mostly about reducing Canva’s reliance on cloud GPUs"
+    ],
     "correct": 0,
-    "explanation": "Placeholder"
+    "explanation": "Cavalry strengthens professional creative workflows, while MangoAI links asset creation to measurable ad performance. Together they push Canva closer to a full-stack creative-plus-marketing platform, which can deepen enterprise value and monetisation."
+  },
+  {
+    "question": "AirTrunk raised a $1.7 billion green loan to expand its Tokyo data centre for cloud and AI growth. Which diligence question is most important if you were evaluating an early-stage startup selling into this AI infrastructure buildout?",
+    "options": [
+      "Whether the startup has meaningful exposure to tokenised equities",
+      "Whether the startup can benefit from higher oil prices",
+      "Whether the startup has celebrity-backed consumer distribution",
+      "Whether demand is tied to durable workloads and power-constrained capacity, rather than a short-lived GPU procurement spike"
+    ],
+    "correct": 3,
+    "explanation": "The key issue is whether AI infrastructure demand is structural and constrained by power, networking and enterprise workloads, or just cyclical hardware spend. Startups selling into the stack need durable pull, not transient capex enthusiasm."
+  },
+  {
+    "question": "Rio Tinto partnered with CATL on mining electrification and battery recycling. For a climate-tech investor, which opportunity is most directly reinforced by this announcement?",
+    "options": [
+      "Startups focused on software for social media moderation",
+      "Startups enabling industrial fleet electrification and closed-loop battery lifecycle management",
+      "Startups building BNPL for mining contractors",
+      "Startups selling generic carbon offset marketplaces"
+    ],
+    "correct": 1,
+    "explanation": "The partnership points to decarbonisation in heavy industry through vehicle electrification and battery recycling, where implementation complexity creates room for specialist technology providers. This is a clearer signal for industrial climate tech than for consumer or offset plays."
+  },
+  {
+    "question": "In the March 11 market update, Telix Pharmaceuticals rallied after positive early-stage results from its global phase 3 trial of TLX591. What was the key factual takeaway cited by investors?",
+    "options": [
+      "The results removed a major overhang and increased confidence the second stage of the US trial would proceed as planned",
+      "The trial was terminated early because efficacy was already proven",
+      "The company received immediate FDA approval for commercial launch",
+      "The drug expanded from prostate cancer into obesity treatment"
+    ],
+    "correct": 0,
+    "explanation": "The reported takeaway was not approval or expansion, but de-risking: positive results reduced a key uncertainty around the program and supported continuation into the next stage. For life sciences investing, this kind of inflection point can materially change financing and partnering options."
+  },
+  {
+    "question": "Cortical Labs unveiled what it described as the first human brain cell-powered data centre in Melbourne. As a VC, what is the most defensible interpretation at this stage?",
+    "options": [
+      "It is already a proven replacement for GPU-based AI infrastructure at hyperscale",
+      "It is best viewed as a potentially valuable frontier-compute and research platform, but commercial repeatability and scalability remain the core questions",
+      "It confirms Australia now leads the world in sovereign cloud economics",
+      "It means synthetic biology startups no longer face regulatory barriers"
+    ],
+    "correct": 1,
+    "explanation": "The announcement is intriguing because it may open new compute architectures and research applications, but it does not yet prove broad commercial viability. The central venture question is whether the technology can move from scientific novelty to scalable, reliable deployment."
+  },
+  {
+    "question": "Thermal Dawn received NSW MVP funding to pilot a low-cost residential thermal storage system intended to replace lithium batteries using daytime solar. Which market thesis would best support an investment here?",
+    "options": [
+      "Households will prefer products that monetise crypto mining during peak solar hours",
+      "Residential energy markets are moving toward thermal flexibility and load-shifting solutions where storing heat can be cheaper than storing electrons for some use cases",
+      "The main value is selling social features to solar communities",
+      "Battery chemistry innovation is becoming irrelevant in home energy"
+    ],
+    "correct": 1,
+    "explanation": "Thermal storage can be attractive where the job to be done is heating and load shifting rather than general-purpose electrical storage. The thesis works if customers can reduce bills with lower-cost hardware and avoid competing head-on with lithium on every dimension."
+  },
+  {
+    "question": "The NSW Government awarded over $1 million in total to 22 startups in round one of its MVP Ventures Program. Roughly how much funding does that imply per startup on average?",
+    "options": [
+      "About $45,000 each",
+      "About $250,000 each",
+      "About $1 million each",
+      "About $100,000 each"
+    ],
+    "correct": 0,
+    "explanation": "A total just over $1 million across 22 companies implies an average a little above $45,000 each. That matters because these grants are useful for prototype-to-commercialisation steps, but typically not enough to replace institutional seed funding."
+  },
+  {
+    "question": "CSIRO warned that long-term underfunding had forced deep job cuts and said it needs $80m–$135m annually for the next decade to remain sustainable. What is the most important implication for the Australian early-stage innovation ecosystem?",
+    "options": [
+      "It should immediately improve university spinout valuations by reducing founder supply",
+      "It mainly affects media sentiment, not company formation or commercialisation",
+      "It could weaken the upstream research pipeline and translational capacity that feeds future deep-tech and life sciences startups",
+      "It means private VCs should stop investing in science-based companies altogether"
+    ],
+    "correct": 2,
+    "explanation": "CSIRO is part of the foundational research and commercialisation infrastructure that seeds future startups, especially in deep tech, climate and life sciences. Structural weakening there can reduce the quality and volume of venture-backable science over time."
   }
 ]
